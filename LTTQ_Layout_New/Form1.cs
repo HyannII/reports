@@ -15,22 +15,32 @@ namespace LTTQ_Layout_New
 {
     public partial class Form1 : Form
     {
-        SqlConnection con;
+        public SqlConnection con;
         private int borderSize = 2;
         private Size formSize;
         private Form currentChildForm = null;
-        public static bool DarkModeOn = true;
         private List<Form> innerForms = new List<Form>();
         private QLHV QuanLiHocVien = new QLHV();
         private QLD QuanLiDiem = new QLD();
         private QLL QuanLiLop = new QLL();
-        private QLGV QuanLiGiangVien = new QLGV(DarkModeOn);
+        private QLGV QuanLiGiangVien;
+        private bool _DarkModeOn = true;
+        public bool DarkModeOn
+        {
+            get { return _DarkModeOn; }
+            set
+            {
+                _DarkModeOn = value;
+            }
+        }
         private struct RGBColors
         {
             public static Color colorBlack = Color.FromArgb(8, 8, 8);
             public static Color colorWhite = Color.FromArgb(214, 214, 214);
             public static Color colorLessBlack = Color.FromArgb(50,50,50);
             public static Color colorLessWhite = Color.FromArgb(160,160,160);
+            public static Color colorPureWhite = Color.FromArgb(255, 255, 255);
+            public static Color colorPureBlack = Color.FromArgb(0, 0, 0);
         }
 
         public Form1()
@@ -38,6 +48,7 @@ namespace LTTQ_Layout_New
             InitializeComponent();
             connect();
             CollapseMenu();
+            QuanLiGiangVien = new QLGV(this, con);
             this.Padding = new Padding(borderSize);
             this.BackColor = Color.FromArgb(210, 180, 140);
             InitializeInnerForms();
@@ -50,7 +61,7 @@ namespace LTTQ_Layout_New
         }
         private void connect()
         {
-            string connectionString = "Data Source=DESKTOP-43NA2S5\\SQLEXPRESS;Initial Catalog=QLTrungTamDayHoc;Integrated Security=True;";
+            string connectionString = "Data Source=DESKTOP-BC5OSC6\\SQLEXPRESS02;Initial Catalog=QLTrungTamDayHoc;Integrated Security=True;";
             con = new SqlConnection(connectionString); //Khởi tạo đối tượng
             con.Open(); //Mở kết nối
         }
@@ -255,6 +266,8 @@ namespace LTTQ_Layout_New
         private void Form1_Load(object sender, EventArgs e)
         {
             formSize = this.ClientSize;
+            panelTitle.Invalidate();
+            panelMenu.Invalidate();
         }
 
         private void panelTitle_MouseDown(object sender, MouseEventArgs e)
@@ -274,13 +287,13 @@ namespace LTTQ_Layout_New
             {
                 formSize = this.ClientSize;
                 this.WindowState = FormWindowState.Maximized;
-                btnMaximize.IconChar = FontAwesome.Sharp.IconChar.Clone;
+                btnMaximize.IconChar = IconChar.Clone;
                 btnMaximize.IconSize = 25;
             }
             else
             {
                 this.WindowState = FormWindowState.Normal;
-                btnMaximize.IconChar = FontAwesome.Sharp.IconChar.Square;
+                btnMaximize.IconChar = IconChar.Square;
                 btnMaximize.IconSize = 20;
             }
         }
@@ -325,12 +338,14 @@ namespace LTTQ_Layout_New
                 iconDark.IconColor = RGBColors.colorBlack;
                 iconToggle.IconColor = RGBColors.colorBlack;
                 ChangeMode(this, RGBColors.colorBlack, RGBColors.colorWhite);
-                ChangeModeTextBox(this, RGBColors.colorLessWhite);
                 foreach (var innerForm in innerForms)
                 {
-                    ChangeMode(innerForm, RGBColors.colorBlack, RGBColors.colorWhite); // Change inner form color
+                    ChangeMode(innerForm, RGBColors.colorBlack, RGBColors.colorWhite);
+                    ChangeModeTextBox(innerForm, RGBColors.colorLessWhite, RGBColors.colorPureBlack); // Change inner form color
                 }
                 DarkModeOn = !DarkModeOn;
+                panelMenu.Invalidate();
+                panelTitle.Invalidate();
             }
             else
             {
@@ -341,12 +356,14 @@ namespace LTTQ_Layout_New
                 iconDark.IconColor = RGBColors.colorWhite;
                 iconToggle.IconColor = RGBColors.colorWhite;
                 ChangeMode(this, RGBColors.colorWhite, RGBColors.colorBlack);
-                ChangeModeTextBox(this, RGBColors.colorLessBlack);
                 foreach (var innerForm in innerForms)
                 {
-                    ChangeMode(innerForm, RGBColors.colorWhite, RGBColors.colorBlack); // Change inner form color back to default
+                    ChangeMode(innerForm, RGBColors.colorWhite, RGBColors.colorBlack);
+                    ChangeModeTextBox(innerForm, RGBColors.colorLessBlack, RGBColors.colorPureWhite); // Change inner form color back to default
                 }
                 DarkModeOn = !DarkModeOn;
+                panelMenu.Invalidate();
+                panelTitle.Invalidate();
             }
         }
         private void ChangeMode(Control control, Color color, Color panelColor)
@@ -369,16 +386,17 @@ namespace LTTQ_Layout_New
                 ChangeMode(childControl, color, panelColor);
             }
         }
-        private void ChangeModeTextBox(Control control, Color color)
+        private void ChangeModeTextBox(Control control, Color color, Color textColor)
         {
-            if (control is TextBox)
+            if (control is TextBox || control is ComboBox)
             {
                 control.BackColor = color;
+                control.ForeColor = textColor;
             }
 
             foreach (Control childControl in control.Controls)
             {
-                ChangeModeTextBox(childControl, color);
+                ChangeModeTextBox(childControl, color, textColor);
             }
         }
         private void iconVi_Click(object sender, EventArgs e)
@@ -531,6 +549,26 @@ namespace LTTQ_Layout_New
             {
                 btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(200,200,200);
             }
+        }
+
+        private void panelMenu_Paint(object sender, PaintEventArgs e)
+        {
+            Color color = DarkModeOn ? RGBColors.colorBlack : RGBColors.colorWhite;
+            // Create a pen to draw the border with the chosen color and a specified thickness
+            Pen p = new Pen(color, 2);
+
+            // Draw the border on the right side
+            e.Graphics.DrawLine(p, this.Width - 1, 0, this.Width - 1, this.Height);
+        }
+
+        private void panelTitle_Paint(object sender, PaintEventArgs e)
+        {
+            Color color = DarkModeOn ? RGBColors.colorBlack : RGBColors.colorWhite;
+            // Create a pen to draw the border with the chosen color and a specified thickness
+            Pen p = new Pen(color, 2);
+
+            // Draw the border at the bottom
+            e.Graphics.DrawLine(p, 0, this.Height - 1, this.Width, this.Height - 1);
         }
     }
 }

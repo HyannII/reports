@@ -87,21 +87,23 @@ namespace LTTQ_Layout_New
             this.MasterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MasterPanel.Location = new System.Drawing.Point(0, 0);
             this.MasterPanel.Name = "MasterPanel";
-            this.MasterPanel.Size = new System.Drawing.Size(1664, 1011);
+            this.MasterPanel.Size = new System.Drawing.Size(1784, 1039);
             this.MasterPanel.TabIndex = 0;
             // 
             // panelDesktop
             // 
             this.panelDesktop.BackColor = System.Drawing.Color.Transparent;
+            this.panelDesktop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(307, 110);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1357, 901);
+            this.panelDesktop.Size = new System.Drawing.Size(1477, 929);
             this.panelDesktop.TabIndex = 5;
             // 
             // panelTitle
             // 
             this.panelTitle.BackColor = System.Drawing.Color.Transparent;
+            this.panelTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelTitle.Controls.Add(this.btnMinimize);
             this.panelTitle.Controls.Add(this.btnMaximize);
             this.panelTitle.Controls.Add(this.btnExit);
@@ -109,8 +111,9 @@ namespace LTTQ_Layout_New
             this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitle.Location = new System.Drawing.Point(307, 0);
             this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(1357, 110);
+            this.panelTitle.Size = new System.Drawing.Size(1477, 110);
             this.panelTitle.TabIndex = 4;
+            this.panelTitle.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTitle_Paint);
             this.panelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitle_MouseDown);
             // 
             // btnMinimize
@@ -123,7 +126,7 @@ namespace LTTQ_Layout_New
             this.btnMinimize.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
             this.btnMinimize.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMinimize.IconSize = 25;
-            this.btnMinimize.Location = new System.Drawing.Point(1237, 12);
+            this.btnMinimize.Location = new System.Drawing.Point(1355, 12);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(32, 24);
             this.btnMinimize.TabIndex = 3;
@@ -142,7 +145,7 @@ namespace LTTQ_Layout_New
             this.btnMaximize.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
             this.btnMaximize.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMaximize.IconSize = 20;
-            this.btnMaximize.Location = new System.Drawing.Point(1275, 12);
+            this.btnMaximize.Location = new System.Drawing.Point(1393, 12);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(32, 24);
             this.btnMaximize.TabIndex = 2;
@@ -161,7 +164,7 @@ namespace LTTQ_Layout_New
             this.btnExit.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
             this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExit.IconSize = 25;
-            this.btnExit.Location = new System.Drawing.Point(1313, 12);
+            this.btnExit.Location = new System.Drawing.Point(1431, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(32, 24);
             this.btnExit.TabIndex = 1;
@@ -186,6 +189,7 @@ namespace LTTQ_Layout_New
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.Transparent;
+            this.panelMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelMenu.Controls.Add(this.panelBC);
             this.panelMenu.Controls.Add(this.btnBC);
             this.panelMenu.Controls.Add(this.panelQLDLK);
@@ -204,8 +208,9 @@ namespace LTTQ_Layout_New
             this.panelMenu.ForeColor = System.Drawing.Color.White;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(307, 1011);
+            this.panelMenu.Size = new System.Drawing.Size(307, 1039);
             this.panelMenu.TabIndex = 3;
+            this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
             // 
             // panelBC
             // 
@@ -216,7 +221,7 @@ namespace LTTQ_Layout_New
             this.panelBC.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBC.Location = new System.Drawing.Point(0, 735);
             this.panelBC.Name = "panelBC";
-            this.panelBC.Size = new System.Drawing.Size(307, 160);
+            this.panelBC.Size = new System.Drawing.Size(305, 160);
             this.panelBC.TabIndex = 19;
             this.panelBC.Visible = false;
             // 
@@ -231,7 +236,7 @@ namespace LTTQ_Layout_New
             this.btnBC4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBC4.Location = new System.Drawing.Point(0, 105);
             this.btnBC4.Name = "btnBC4";
-            this.btnBC4.Size = new System.Drawing.Size(307, 35);
+            this.btnBC4.Size = new System.Drawing.Size(305, 35);
             this.btnBC4.TabIndex = 2;
             this.btnBC4.Tag = "BÁO CÁO 4";
             this.btnBC4.Text = "BÁO CÁO 4";
@@ -253,7 +258,7 @@ namespace LTTQ_Layout_New
             this.btnBC3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBC3.Location = new System.Drawing.Point(0, 70);
             this.btnBC3.Name = "btnBC3";
-            this.btnBC3.Size = new System.Drawing.Size(307, 35);
+            this.btnBC3.Size = new System.Drawing.Size(305, 35);
             this.btnBC3.TabIndex = 3;
             this.btnBC3.Tag = "BÁO CÁO 3";
             this.btnBC3.Text = "BÁO CÁO 3";
@@ -275,7 +280,7 @@ namespace LTTQ_Layout_New
             this.btnBC2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBC2.Location = new System.Drawing.Point(0, 35);
             this.btnBC2.Name = "btnBC2";
-            this.btnBC2.Size = new System.Drawing.Size(307, 35);
+            this.btnBC2.Size = new System.Drawing.Size(305, 35);
             this.btnBC2.TabIndex = 1;
             this.btnBC2.Tag = "BÁO CÁO 2";
             this.btnBC2.Text = "BÁO CÁO 2";
@@ -297,7 +302,7 @@ namespace LTTQ_Layout_New
             this.btnBC1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBC1.Location = new System.Drawing.Point(0, 0);
             this.btnBC1.Name = "btnBC1";
-            this.btnBC1.Size = new System.Drawing.Size(307, 35);
+            this.btnBC1.Size = new System.Drawing.Size(305, 35);
             this.btnBC1.TabIndex = 0;
             this.btnBC1.Tag = "BÁO CÁO 1";
             this.btnBC1.Text = "BÁO CÁO 1";
@@ -321,7 +326,7 @@ namespace LTTQ_Layout_New
             this.btnBC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBC.Location = new System.Drawing.Point(0, 680);
             this.btnBC.Name = "btnBC";
-            this.btnBC.Size = new System.Drawing.Size(307, 55);
+            this.btnBC.Size = new System.Drawing.Size(305, 55);
             this.btnBC.TabIndex = 18;
             this.btnBC.Tag = "BÁO CÁO";
             this.btnBC.Text = "BÁO CÁO";
@@ -340,7 +345,7 @@ namespace LTTQ_Layout_New
             this.panelQLDLK.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelQLDLK.Location = new System.Drawing.Point(0, 560);
             this.panelQLDLK.Name = "panelQLDLK";
-            this.panelQLDLK.Size = new System.Drawing.Size(307, 120);
+            this.panelQLDLK.Size = new System.Drawing.Size(305, 120);
             this.panelQLDLK.TabIndex = 17;
             this.panelQLDLK.Visible = false;
             // 
@@ -355,7 +360,7 @@ namespace LTTQ_Layout_New
             this.btnQLDLK3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLDLK3.Location = new System.Drawing.Point(0, 70);
             this.btnQLDLK3.Name = "btnQLDLK3";
-            this.btnQLDLK3.Size = new System.Drawing.Size(307, 35);
+            this.btnQLDLK3.Size = new System.Drawing.Size(305, 35);
             this.btnQLDLK3.TabIndex = 2;
             this.btnQLDLK3.Tag = "QUẢN LÍ DỮ LIỆU KHÁC 3";
             this.btnQLDLK3.Text = "QUẢN LÍ DỮ LIỆU KHÁC 3";
@@ -377,7 +382,7 @@ namespace LTTQ_Layout_New
             this.btnQLDLK2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLDLK2.Location = new System.Drawing.Point(0, 35);
             this.btnQLDLK2.Name = "btnQLDLK2";
-            this.btnQLDLK2.Size = new System.Drawing.Size(307, 35);
+            this.btnQLDLK2.Size = new System.Drawing.Size(305, 35);
             this.btnQLDLK2.TabIndex = 1;
             this.btnQLDLK2.Tag = "QUẢN LÍ DỮ LIỆU KHÁC 2";
             this.btnQLDLK2.Text = "QUẢN LÍ DỮ LIỆU KHÁC 2";
@@ -399,7 +404,7 @@ namespace LTTQ_Layout_New
             this.btnQLDLK1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLDLK1.Location = new System.Drawing.Point(0, 0);
             this.btnQLDLK1.Name = "btnQLDLK1";
-            this.btnQLDLK1.Size = new System.Drawing.Size(307, 35);
+            this.btnQLDLK1.Size = new System.Drawing.Size(305, 35);
             this.btnQLDLK1.TabIndex = 0;
             this.btnQLDLK1.Tag = "QUẢN LÍ DỮ LIỆU KHÁC 1";
             this.btnQLDLK1.Text = "QUẢN LÍ DỮ LIỆU KHÁC 1";
@@ -423,7 +428,7 @@ namespace LTTQ_Layout_New
             this.btnQLDLK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLDLK.Location = new System.Drawing.Point(0, 505);
             this.btnQLDLK.Name = "btnQLDLK";
-            this.btnQLDLK.Size = new System.Drawing.Size(307, 55);
+            this.btnQLDLK.Size = new System.Drawing.Size(305, 55);
             this.btnQLDLK.TabIndex = 16;
             this.btnQLDLK.Tag = "QUẢN LÍ DỮ LIỆU KHÁC";
             this.btnQLDLK.Text = "QUẢN LÍ DỮ LIỆU KHÁC";
@@ -441,7 +446,7 @@ namespace LTTQ_Layout_New
             this.panelSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSearch.Location = new System.Drawing.Point(0, 425);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(307, 80);
+            this.panelSearch.Size = new System.Drawing.Size(305, 80);
             this.panelSearch.TabIndex = 14;
             this.panelSearch.Visible = false;
             // 
@@ -457,7 +462,7 @@ namespace LTTQ_Layout_New
             this.btnTKGV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTKGV.Location = new System.Drawing.Point(0, 35);
             this.btnTKGV.Name = "btnTKGV";
-            this.btnTKGV.Size = new System.Drawing.Size(307, 35);
+            this.btnTKGV.Size = new System.Drawing.Size(305, 35);
             this.btnTKGV.TabIndex = 1;
             this.btnTKGV.Tag = "TÌM KIẾM GIẢNG VIÊN";
             this.btnTKGV.Text = "TÌM KIẾM GIẢNG VIÊN";
@@ -480,7 +485,7 @@ namespace LTTQ_Layout_New
             this.btnTKMH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTKMH.Location = new System.Drawing.Point(0, 0);
             this.btnTKMH.Name = "btnTKMH";
-            this.btnTKMH.Size = new System.Drawing.Size(307, 35);
+            this.btnTKMH.Size = new System.Drawing.Size(305, 35);
             this.btnTKMH.TabIndex = 0;
             this.btnTKMH.Tag = "TÌM KIẾM MÔN HỌC";
             this.btnTKMH.Text = "TÌM KIẾM MÔN HỌC";
@@ -505,7 +510,7 @@ namespace LTTQ_Layout_New
             this.btnTK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTK.Location = new System.Drawing.Point(0, 370);
             this.btnTK.Name = "btnTK";
-            this.btnTK.Size = new System.Drawing.Size(307, 55);
+            this.btnTK.Size = new System.Drawing.Size(305, 55);
             this.btnTK.TabIndex = 13;
             this.btnTK.Tag = "TÌM KIẾM";
             this.btnTK.Text = "TÌM KIẾM";
@@ -530,7 +535,7 @@ namespace LTTQ_Layout_New
             this.btnQLGV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLGV.Location = new System.Drawing.Point(0, 315);
             this.btnQLGV.Name = "btnQLGV";
-            this.btnQLGV.Size = new System.Drawing.Size(307, 55);
+            this.btnQLGV.Size = new System.Drawing.Size(305, 55);
             this.btnQLGV.TabIndex = 12;
             this.btnQLGV.Tag = "QUẢN LÍ GIẢNG VIÊN";
             this.btnQLGV.Text = "QUẢN LÍ GIẢNG VIÊN";
@@ -555,7 +560,7 @@ namespace LTTQ_Layout_New
             this.btnQLL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLL.Location = new System.Drawing.Point(0, 260);
             this.btnQLL.Name = "btnQLL";
-            this.btnQLL.Size = new System.Drawing.Size(307, 55);
+            this.btnQLL.Size = new System.Drawing.Size(305, 55);
             this.btnQLL.TabIndex = 11;
             this.btnQLL.Tag = "QUẢN LÍ LỚP";
             this.btnQLL.Text = "QUẢN LÍ LỚP";
@@ -580,7 +585,7 @@ namespace LTTQ_Layout_New
             this.btnQLD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLD.Location = new System.Drawing.Point(0, 205);
             this.btnQLD.Name = "btnQLD";
-            this.btnQLD.Size = new System.Drawing.Size(307, 55);
+            this.btnQLD.Size = new System.Drawing.Size(305, 55);
             this.btnQLD.TabIndex = 10;
             this.btnQLD.Tag = "QUẢN LÍ ĐIỂM";
             this.btnQLD.Text = "QUẢN LÍ ĐIỂM";
@@ -605,7 +610,7 @@ namespace LTTQ_Layout_New
             this.btnQLHV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLHV.Location = new System.Drawing.Point(0, 150);
             this.btnQLHV.Name = "btnQLHV";
-            this.btnQLHV.Size = new System.Drawing.Size(307, 55);
+            this.btnQLHV.Size = new System.Drawing.Size(305, 55);
             this.btnQLHV.TabIndex = 9;
             this.btnQLHV.Tag = "QUẢN LÍ HỌC VIÊN";
             this.btnQLHV.Text = "QUẢN LÍ HỌC VIÊN";
@@ -624,9 +629,9 @@ namespace LTTQ_Layout_New
             this.panelSettings.Controls.Add(this.iconToggle);
             this.panelSettings.Controls.Add(this.iconDark);
             this.panelSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelSettings.Location = new System.Drawing.Point(0, 891);
+            this.panelSettings.Location = new System.Drawing.Point(0, 917);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(307, 40);
+            this.panelSettings.Size = new System.Drawing.Size(305, 40);
             this.panelSettings.TabIndex = 8;
             // 
             // iconVi
@@ -681,7 +686,7 @@ namespace LTTQ_Layout_New
             this.iconLight.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
             this.iconLight.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconLight.IconSize = 40;
-            this.iconLight.Location = new System.Drawing.Point(142, 0);
+            this.iconLight.Location = new System.Drawing.Point(140, 0);
             this.iconLight.Name = "iconLight";
             this.iconLight.Rotation = 23D;
             this.iconLight.Size = new System.Drawing.Size(55, 40);
@@ -699,7 +704,7 @@ namespace LTTQ_Layout_New
             this.iconToggle.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
             this.iconToggle.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconToggle.IconSize = 50;
-            this.iconToggle.Location = new System.Drawing.Point(197, 0);
+            this.iconToggle.Location = new System.Drawing.Point(195, 0);
             this.iconToggle.Name = "iconToggle";
             this.iconToggle.Size = new System.Drawing.Size(55, 40);
             this.iconToggle.TabIndex = 5;
@@ -720,7 +725,7 @@ namespace LTTQ_Layout_New
             this.iconDark.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
             this.iconDark.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconDark.IconSize = 35;
-            this.iconDark.Location = new System.Drawing.Point(252, 0);
+            this.iconDark.Location = new System.Drawing.Point(250, 0);
             this.iconDark.Name = "iconDark";
             this.iconDark.Size = new System.Drawing.Size(55, 40);
             this.iconDark.TabIndex = 4;
@@ -738,10 +743,10 @@ namespace LTTQ_Layout_New
             this.ItemExit.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
             this.ItemExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ItemExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ItemExit.Location = new System.Drawing.Point(0, 931);
+            this.ItemExit.Location = new System.Drawing.Point(0, 957);
             this.ItemExit.Name = "ItemExit";
             this.ItemExit.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.ItemExit.Size = new System.Drawing.Size(307, 80);
+            this.ItemExit.Size = new System.Drawing.Size(305, 80);
             this.ItemExit.TabIndex = 7;
             this.ItemExit.Tag = "THOÁT";
             this.ItemExit.Text = "Exit";
@@ -759,7 +764,7 @@ namespace LTTQ_Layout_New
             this.panelMenuImg.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenuImg.Location = new System.Drawing.Point(0, 0);
             this.panelMenuImg.Name = "panelMenuImg";
-            this.panelMenuImg.Size = new System.Drawing.Size(307, 150);
+            this.panelMenuImg.Size = new System.Drawing.Size(305, 150);
             this.panelMenuImg.TabIndex = 0;
             // 
             // homePicture
@@ -767,7 +772,7 @@ namespace LTTQ_Layout_New
             this.homePicture.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homePicture.Location = new System.Drawing.Point(75, 0);
             this.homePicture.Name = "homePicture";
-            this.homePicture.Size = new System.Drawing.Size(232, 150);
+            this.homePicture.Size = new System.Drawing.Size(230, 150);
             this.homePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.homePicture.TabIndex = 2;
             this.homePicture.TabStop = false;
@@ -798,9 +803,9 @@ namespace LTTQ_Layout_New
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(1664, 1011);
+            this.ClientSize = new System.Drawing.Size(1784, 1039);
             this.Controls.Add(this.MasterPanel);
-            this.MinimumSize = new System.Drawing.Size(1680, 1050);
+            this.MinimumSize = new System.Drawing.Size(1800, 1078);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -823,6 +828,7 @@ namespace LTTQ_Layout_New
 
         private System.Windows.Forms.Panel MasterPanel;
         private System.Windows.Forms.Panel panelDesktop;
+        private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelTitle;
         private FontAwesome.Sharp.IconButton iconLight;
         private FontAwesome.Sharp.IconButton iconToggle;
@@ -831,7 +837,6 @@ namespace LTTQ_Layout_New
         private FontAwesome.Sharp.IconButton iconDark;
         private FontAwesome.Sharp.IconButton btnExit;
         private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.Panel panelMenu;
         private FontAwesome.Sharp.IconButton ItemExit;
         private System.Windows.Forms.Panel panelMenuImg;
         private FontAwesome.Sharp.IconButton menuExpander;
