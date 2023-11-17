@@ -20,7 +20,7 @@ namespace LTTQ_Layout_New
         private Size formSize;
         private Form currentChildForm = null;
         private List<Form> innerForms = new List<Form>();
-        private QLHV QuanLiHocVien = new QLHV();
+        private QLHV QuanLiHocVien;
         private QLD QuanLiDiem = new QLD();
         private QLL QuanLiLop = new QLL();
         private QLGV QuanLiGiangVien;
@@ -49,6 +49,7 @@ namespace LTTQ_Layout_New
             connect();
             CollapseMenu();
             QuanLiGiangVien = new QLGV(this, con);
+            QuanLiHocVien = new QLHV(this, con);
             this.Padding = new Padding(borderSize);
             this.BackColor = Color.FromArgb(210, 180, 140);
             InitializeInnerForms();
@@ -61,7 +62,7 @@ namespace LTTQ_Layout_New
         }
         private void connect()
         {
-            string connectionString = "Data Source=DESKTOP-BC5OSC6\\SQLEXPRESS02;Initial Catalog=QLTrungTamDayHoc;Integrated Security=True;";
+            string connectionString = "Data Source=DESKTOP-43NA2S5\\SQLEXPRESS;Initial Catalog=QLTrungTamDayHoc;Integrated Security=True;";
             con = new SqlConnection(connectionString); //Khởi tạo đối tượng
             con.Open(); //Mở kết nối
         }
@@ -266,8 +267,6 @@ namespace LTTQ_Layout_New
         private void Form1_Load(object sender, EventArgs e)
         {
             formSize = this.ClientSize;
-            panelTitle.Invalidate();
-            panelMenu.Invalidate();
         }
 
         private void panelTitle_MouseDown(object sender, MouseEventArgs e)

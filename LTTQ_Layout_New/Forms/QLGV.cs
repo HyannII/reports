@@ -345,17 +345,6 @@ namespace LTTQ_Layout_New.Forms
                 btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(120, 120, 120);
             }
         }
-        private void changeDGVBackground()
-        {
-            if(_form1.DarkModeOn)
-            {
-                dataGridView1.BackgroundColor = Color.FromArgb(8, 8, 8);
-            }
-            else
-            {
-                dataGridView1.BackgroundColor = Color.FromArgb(214, 214, 214);
-            }
-        }
 
         private void btnThemTTCT_Click(object sender, EventArgs e)
         {
